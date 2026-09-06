@@ -1,0 +1,110 @@
+{
+  "layer": "top",
+  "position": "top",
+  "spacing": 3,
+  "height": 1,
+  "margin-top": 0,
+  "margin-left": 0,
+  "margin-right": 0,
+
+  "modules-left": ["custom/hyde-menu","hyprland/workspaces","custom/cpucat"],
+  "modules-right": [
+    "wireplumber",
+    "backlight",
+    "battery",
+    "mpris",
+    "clock",
+    "tray",
+    "custom/power"
+  ],
+  "custom/tab": {
+  "format": "[Z]",
+  "on-click": "rofi -show drun",
+},
+  "hyprland/workspaces": {
+    "format": "{name}",
+    "on-click": "activate",
+    "sort-by-number": true
+  },
+
+  "mpris": {
+    "format": "  {artist} - {title} ",
+    "format-paused": " 󰐊 {artist} - {title} ",
+    "max-length": 37,
+    "tooltip": true,
+    "player": "spotify"
+  },
+
+  "tray": {
+    "icon-size": 16,
+    "spacing": 6
+  },
+"custom/cpucat": {
+    "exec":"/home/lazy/.config/waybar/scripts/catloop.sh"
+},
+  "wireplumber": {
+    "scroll-step": 5,
+    "format": " {icon} {volume}%",
+    "format-muted": "󰝟 muted",
+    "on-click": "pavucontrol",
+    "format-icons": {
+      "default": ["󰕿", "󰖀", "󰕾"],
+      "headphones": "󰋋",
+      "headset": "󰋎"
+    }
+  },
+
+  "backlight": {
+    "device": "intel_backlight",
+    "format": " {icon} {percent}% ",
+    "format-icons": ["󰃞", "󰃟", "󰃠"]
+  },
+
+  "battery": {
+    "states": { "warning": 30, "critical": 15 },
+    "format": "{icon} {capacity}% ",
+    "format-charging": "󰂄 {capacity}% ",
+    "format-plugged": "󱟦 {capacity}% ",
+    "format-full": "󰁹 {capacity}% ",
+    "format-icons": [
+      "󰂎", "󰁺", "󰁻", "󰁼", "󰁽",
+      "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"
+    ]
+  },
+
+  "clock": {
+    "format": "{:%m-%d-%Y %I:%M %p} "
+  },
+
+  "custom/power": {
+    "format": "⏻ ",
+    "on-click": "wlogout",
+    "tooltip": false
+  },
+
+  "custom/hyde-menu": {
+    "format": " ",
+    "tooltip": true,
+    "tooltip-format": "Right-click for more HyDE options",
+    "menu": "on-click-right",
+    "menu-file": "${HYDE_WAYBAR_MENU_DIR:-$XDG_DATA_HOME/waybar/menus}/hyde-menu.xml",
+    "menu-actions": {
+      "animations-select": "hyde-shell animations --select",
+      "wallpaper-select": "hyde-shell wallpaper --select --global",
+      "wallpaper-next": "hyde-shell wallpaper --next --global",
+      "wallpaper-previous": "hyde-shell wallpaper --previous --global",
+      "wallpaper-random": "hyde-shell wallpaper --random --global",
+      "theme-next": "hyde-shell theme.switch -n",
+      "theme-previous": "hyde-shell theme.switch -p",
+      "theme-select": "hyde-shell themeselect",
+      "layouts-select": "hyde-shell layouts --select;pkill -RTMIN+19 waybar",
+      "waybar-restart": "hyde-shell waybar -ubg",
+      "waybar-layout-select": "hyde-shell waybar --select-layout",
+      "waybar-style-select": "hyde-shell waybar --select-style",
+      "lockscreen-select": "hyde-shell lockscreen --select",
+      "workflows-select": "hyde-shell workflows --select;pkill -RTMIN+19 waybar",
+      "keybinds-hint": "hyde-shell keybinds_hint",
+      "about-hyde": "xdg-open https://hydeproject.pages.dev"
+    }
+  }
+}
